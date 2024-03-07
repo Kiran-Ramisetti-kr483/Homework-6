@@ -21,38 +21,6 @@ def test_app_add_command(capfd, monkeypatch):
     with pytest.raises(SystemExit):
         app.start()
 
-def test_division_command_no_args(capfd):
-    """Test that division command handles no arguments."""
-    command = DivisionCommand()
-    command.execute([])
-    captured = capfd.readouterr()
-    assert captured.out.strip() == "nothing to Divide"
-
-def test_division_command_division_by_zero(capfd):
-    """Test that division command handles division by zero."""
-    command = DivisionCommand()
-    command.execute(["5", "0"])
-    captured = capfd.readouterr()
-    assert captured.out.strip() == "division by zero error"
-
-# Existing test cases remain unchanged
-
-def test_app_multiplication_command(capfd, monkeypatch):
-    """Test that the REPL correctly handles the 'multiply' command."""
-    inputs = iter(['multiply 2 3', 'exit'])
-    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-    app = App()
-    with pytest.raises(SystemExit):
-        app.start()
-
-def test_app_subtraction_command(capfd, monkeypatch):
-    """Test that the REPL correctly handles the 'subtract' command."""
-    inputs = iter(['subtract 5 3', 'exit'])
-    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-    app = App()
-    with pytest.raises(SystemExit):
-        app.start()
-
 def test_menu_command(capfd, monkeypatch):
     """Test that the REPL correctly handles the 'menu' command."""
     inputs = iter(['menu', 'exit'])
@@ -99,12 +67,36 @@ def test_addition_command_with_args(capfd):
     captured = capfd.readouterr()
     assert captured.out.strip() == "5.0"
 
+def test_division_command_no_args(capfd):
+    """Test that division command handles no arguments."""
+    command = DivisionCommand()
+    command.execute([])
+    captured = capfd.readouterr()
+    assert captured.out.strip() == "nothing to Divide"
+
+def test_division_command_division_by_zero(capfd):
+    """Test that division command handles division by zero."""
+    command = DivisionCommand()
+    command.execute(["5", "0"])
+    captured = capfd.readouterr()
+    assert captured.out.strip() == "division by zero error"
+
 def test_division_command_with_args(capfd):
     """Test that division command handles arguments."""
     command = DivisionCommand()
     command.execute(["10", "2"])
     captured = capfd.readouterr()
     assert captured.out.strip() == "Division result : 5.0"
+
+
+
+def test_app_multiplication_command(capfd, monkeypatch):
+    """Test that the REPL correctly handles the 'multiply' command."""
+    inputs = iter(['multiply 2 3', 'exit'])
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+    app = App()
+    with pytest.raises(SystemExit):
+        app.start()
 
 def test_multiplication_command_no_args(capfd):
     """Test that multiplication command handles no arguments."""
@@ -119,6 +111,14 @@ def test_multiplication_command_with_args(capfd):
     command.execute(["2", "3"])
     captured = capfd.readouterr()
     assert captured.out.strip() == "multiplication result : 6.0"
+
+def test_app_subtraction_command(capfd, monkeypatch):
+    """Test that the REPL correctly handles the 'subtract' command."""
+    inputs = iter(['subtract 5 3', 'exit'])
+    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
+    app = App()
+    with pytest.raises(SystemExit):
+        app.start()
 
 def test_subtraction_command_no_args(capfd):
     """Test that subtraction command handles no arguments."""
