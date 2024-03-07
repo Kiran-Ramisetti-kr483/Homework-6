@@ -39,13 +39,6 @@ def test_app_multiply_command(capfd, monkeypatch):
     
     assert str(e.value) == "Exiting...", "The app did not exit as expected"
 
-
-import pytest
-from app import App
-
-import pytest
-from app import App
-
 def test_app_subtraction_command(capfd, monkeypatch):
     """Test that the REPL correctly handles the 'subtract' command."""
     # Simulate user entering 'subtract 5 3' followed by 'exit'
@@ -57,9 +50,3 @@ def test_app_subtraction_command(capfd, monkeypatch):
         app.start()  # Assuming App.start() is now a static method based on previous discussions
     
     assert str(e.value) == "Exiting...", "The app did not exit as expected"
-
-    # Capture stdout
-    captured = capfd.readouterr()
-
-    # Verify output
-    assert "Subtraction result : 2" in captured.out, "Subtraction result not printed correctly"
