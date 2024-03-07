@@ -1,6 +1,5 @@
 from app.commands import Command
 
-
 class SubtractionCommand(Command):
     def execute(self, args):
         if args:

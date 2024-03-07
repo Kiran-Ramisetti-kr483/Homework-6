@@ -1,6 +1,5 @@
 from app.commands import Command
 
-
 class MultiplicationCommand(Command):
     def execute(self, args):
         if args:
