@@ -1,2 +1,3 @@
-Homework 6 is done.
 Trying to run workflow.
+Workflow running successfully.
+Homework 6 is done.
