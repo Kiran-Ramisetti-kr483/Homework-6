@@ -25,7 +25,7 @@ def copy_workflow_logs(repo_owner, repo_name, run_id, output_folder):
         print(f"Failed to fetch logs. Status code: {response.status_code}")
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
+    if len(sys.argv) != 5:
         print("Usage: python copy_logs.py [REPO_OWNER] [REPO_NAME] [RUN_ID] [OUTPUT_FOLDER]")
         sys.exit(1)
 
